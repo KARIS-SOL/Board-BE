@@ -1,12 +1,11 @@
 const express = require('express');
 
-const router = express.Router();
+const router = express.Router(); //   express 라우터를 실행시켜서 router 변수에 넣어주기
 
-// localhost:4000/users/
+// '/' 이 주소로 요청받으면 코드를 실행시켜줘
+// localhost:/4000/users
 router.get('/', (req, res) => {
-  // res.send('여기는 유저 라우터입니다');
-  // render 로 가져오고 싶은 ejs 파일 적기
-  res.render('users', { user: '진솔' });
+  res.render('users', { user: '김성현' });
 });
 
-module.exports = router;
+module.exports = router; //  molude.exports 로 모듈로서 빼주어서 외부에서 사용 가능하게 하기

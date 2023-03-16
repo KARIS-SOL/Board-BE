@@ -1,14 +1,11 @@
 const express = require('express');
 
-const router = express.Router();
+const router = express.Router(); //   express 라우터를 실행시켜서 router 변수에 넣어주기
 
-// localhost:4000
+// '/' 이 주소로 요청받으면 코드를 실행시켜줘
+// localhost:/4000
 router.get('/', (req, res) => {
-  // res.send('여기는 메인 라우터 입니다');
-  // render 로 가져오고 싶은 ejs 파일 적기
-  // msg 를 ejs 에서 받기
-  res.render('index', { msg: '이 데이터는 백엔드가 보냈어요' });
+  res.render('index', { msg: '이 데이터는 백엔드가 보냈어요!' }); // render는 그리는 것, 이 주소로 요청이 들어오면 index.ejs 파일을 보여줌
 });
 
-// 모듈 먼저 설저해놓고 위에 코드 짜기
-module.exports = router;
+module.exports = router; //  molude.exports 로 모듈로서 빼주어서 외부에서 사용 가능하게 해주기

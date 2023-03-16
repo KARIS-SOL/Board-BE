@@ -5,17 +5,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- '/' localhost:4000/public/   static 으로 public 을 app.js 에서 지정해줬기 때문에 그다음부터적으면됨-->
-  <link rel="stylesheet" href="/css/style.css">
-  <script defer src="/js/main.js"></script>
-  <title>Main Page</title>
+  <title>메인 페이지</title>
+  <!-- localhost:4000/public/ -->
+  <!-- <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/main.js"></script> -->
 </head>
 
 <body>
-  <h1>메인 페이지 입니다!</h1>
-  <p><%= msg %></p>
-  <img src="/image/cat.jpg" alt="고양이">
+  <h1>Welcome to Karis Express SErvice!</h1>
+  <h2><a href="/users"> 회원 서비스 </a></h2>
+  <h2><a href="/dbBoard"> 게시판 서비스 </a></h2>
+  <script>
+    // console.log(document.cookie);
 
+    // document.cookie = "user=karis; expires=17 Mar 2023 13:00:00 GMT; path=/";
+    // document.cookie = "test=kdt; expires=17 Mar 2023 13:00:00 GMT; path=/";
+
+    console.log(document.cookie);
+  </script>
 </body>
 
 </html>

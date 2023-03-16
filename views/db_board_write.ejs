@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>수정 모드</title>
+  <title>Write Mode</title>
   <style>
     * {
       margin: 0;
@@ -108,6 +108,14 @@
       outline: 2px solid orange;
     }
 
+    .inner .board_container .board_form .form_img {
+      margin: 30px;
+    }
+
+    .inner .board_container .board_form .form_img h3 {
+      margin-bottom: 10px;
+    }
+
     .inner .board_container .board_form button {
       height: 40px;
       width: 110px;
@@ -131,24 +139,21 @@
   <div class="inner">
     <div class="board_container">
       <div class="board_header">
-        <h1>Write Mode</h1>
+        <h1>글 쓰기</h1>
       </div>
-      <form action="/board/modify/<%=selectedArticle.title%>" method="POST" class="board_form">
+      <form action="/dbBoard/write" method="POST" class="board_form">
         <div class="form_title">
           <h3>제목</h3>
-          <input type="text" name="title" value="<%= selectedArticle.title %>" required />
+          <input type="text" name="title" required />
         </div>
         <div class="form_content">
           <h3>내용</h3>
-          <textarea name="content" id="content" cols="30" rows="10" required>
-            <%= selectedArticle.content %>
-          </textarea>
+          <textarea name="content" id="content" cols="30" rows="10" required></textarea>
         </div>
-        <button type="submit">글 수정하기</button>
+        <button type="submit">글 작성하기</button>
       </form>
     </div>
   </div>
-
 </body>
 
 </html>
