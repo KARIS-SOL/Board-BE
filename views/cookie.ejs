@@ -31,21 +31,22 @@
       }
     });
 
-    // checkbox.addEventListener('click', () => {          
-    // if (checkbox.checked) {
-    //   fetch('/cookie/cook', {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-type': 'application/json',
-    //     },
-    //   }).then((res) => {
-    //     console.log('Response', res);
-    //     return res.json();
-    //   }).then((msg) => { // promise chaining 
-    //     console.log('Message', msg);
-    //   })
-    // }
-    // });
+    // 공부용 작성 
+    checkbox.addEventListener('click', () => {
+      if (checkbox.checked) {
+        fetch('/cookie/cook', {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }).then((res) => {
+          console.log('Response', res);
+          return res.json();
+        }).then((msg) => { // promise chaining 
+          console.log('Message', msg);
+        })
+      }
+    });
   </script>
 </body>
 
