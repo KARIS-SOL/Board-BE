@@ -27,7 +27,8 @@ const userDB = {
         cb(data);
       },
     );
-  }, // 회원가입하기
+  },
+  // 회원가입하기
   registerUser: (newUser, cb) => {
     connection.query(
       `INSERT INTO mydb.user (USERID, PASSWORD) values ( '${newUser.id}', '${newUser.password}' );`,
