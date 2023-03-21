@@ -6,8 +6,8 @@ const boardDB = require('../controllers/boardController');
 const router = express.Router();
 
 // 로그인 확인용 미들웨어
-function isLogin(req, res, next) {
-  if (req.session.login) {
+const isLogin = (req, res, next) => {
+  if (req.session.login || req.signedCookies.user) {
     next();
   } else {
     res.status(404);
@@ -15,7 +15,7 @@ function isLogin(req, res, next) {
       '로그인이 필요한 서비스 입니다 </br><a href="/login">로그인 페이지로 이동 </a>',
     );
   }
-}
+};
 
 // 게시판 페이지 호출
 router.get('/', isLogin, (req, res) => {
@@ -39,9 +39,15 @@ router.get('/write', (req, res) => {
 router.post('/write', isLogin, (req, res) => {
   // console.log(req.body); // 파라미터가 아닌 form 으로 넘기니 req.body로 받아야 함
   if (req.body.title && req.body.content) {
+    const newArticle = {
+      id: req.session.userId,
+      title: req.body.title,
+      content: req.body.content,
+    };
     boardDB.writeArticle(req.body, (data) => {
-      console.log(data);
+      // console.log(data);
       if (data.affectedRows >= 1) {
+        res.status(200);
         res.redirect('/dbBoard');
       } else {
         // 사용자가 요청을 제대로 했지만 서버에서 오류난케이스
