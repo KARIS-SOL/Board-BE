@@ -8,7 +8,7 @@
 //   useUnifiedTopology: false,
 //   serverApi: ServerApiVersion.v1,
 // });
-
+// insertOne
 // client.connect((err) => {
 //   const test = client.db('kdt5').collection('test');
 
@@ -116,7 +116,7 @@ client.connect((err) => {
   const test = client.db('kdt5').collection('test');
 
   test.deleteMany({}, (deleteErr, deleteResult) => {
-    if (deleteErr) throw deletErr;
+    if (deleteErr) throw deleteErr;
     test.insertMany(
       [
         { name: 'pororo', age: 5 },
