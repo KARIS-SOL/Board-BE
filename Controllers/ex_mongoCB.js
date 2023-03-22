@@ -1,8 +1,4 @@
-const {
-  MongoClient,
-  ServerApiVersion,
-  TopologyDescriptionChangedEvent,
-} = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const uri =
   'mongodb+srv://soleee90:wlsthf11@cluster0.iv78wqp.mongodb.net/?retryWrites=true&w=majority';
@@ -42,30 +38,3 @@ async function main() {
 }
 
 main();
-
-//   member.insertOne(
-//     { name: '이효석', age: 39 },
-//     (insertOneErr, insertOneReuslt) => {
-//       if (insertOneErr) throw insertOneErr;
-
-//       member.deleteOne({ name: '신상아' }, (deleteOneErr, deleteOneResult) => {
-//         if (deleteOneErr) throw deleteOneErr;
-
-//         member.updateOne(
-//           { name: '이효석' },
-//           { $set: { name: '신상아', age: 24 } },
-//           (updateOneErr, updateOneResult) => {
-//             if (updateOneErr) throw updateOneErr;
-
-//             const oldCursor = member.find({ age: { $gte: 25 } });
-
-//             oldCursor.toArray((toArrErr, toArrData) => {
-//               if (toArrErr) throw toArrErr;
-//               console.log(toArrData);
-//             });
-//           },
-//         );
-//       });
-//     },
-//   );
-// }

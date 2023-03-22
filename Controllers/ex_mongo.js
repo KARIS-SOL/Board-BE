@@ -1,8 +1,4 @@
-const {
-  MongoClient,
-  ServerApiVersion,
-  TopologyDescriptionChangedEvent,
-} = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const uri =
   'mongodb+srv://soleee90:wlsthf11@cluster0.iv78wqp.mongodb.net/?retryWrites=true&w=majority';

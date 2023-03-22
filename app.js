@@ -15,7 +15,7 @@ app.use(express.static('public')); // app.use 를 사용하여 static 폴더 사
 // bodyparser 를 위한 코드 2줄
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('tetz'));
 app.use(
   session({
     secret: '1234',
