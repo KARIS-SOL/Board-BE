@@ -46,15 +46,7 @@
 // module.exports = userDB;
 
 // Code Refactoring
-
-// mongoose Connect 에서 이미 connect() 로 연결했기 때문에 밑에 주석 가능
-// const mongooseConnect =require('./mongooseConnect');
-// mongooseConnect();
-
-// 여기서 Connect 생각안하고 require 하면 됨
-require('./mongooseConnect');
-// 모델 불러오기
-const User = require('../models/user');
+const mongoClient = require('./mongoConnect');
 
 const UNEXPECTED_MSG =
   '알 수 없는 문제 발생 <br><a href="/register">회원가입으로 이동</a>';
@@ -75,11 +67,13 @@ const LOGIN_WRONGPASSWORD_MSG =
 
 const registerUser = async (req, res) => {
   try {
-    // 접속시킨후에 query 날리기 mongoose 에서는 insert 가 없으므로 create 로 씀
-    // const duplicatedUser = await User.findOne({ id: req.body.id });
-    // if (duplicatedUser) return res.status(400).send(DUPLICATED_MSG);
-    await User.create(req.body);
-
+    const client = await mongoClient.connect();
+    const user = client.db('kdt5').collection('user');
+    // 중복 확인
+    const duplicatedUser = await user.findOne({ id: req.body.id });
+    if (duplicatedUser) return res.status(400).send(DUPLICATED_MSG);
+    // return 에서 종료되면 insertOne req.body 에서 회원가입시키면됨
+    await user.insertOne(req.body);
     res.status(200).send(SUCCESS_MSG);
   } catch (err) {
     console.error(err);
@@ -89,7 +83,10 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const findUser = await User.findOne({ id: req.body.id });
+    const client = await mongoClient.connect();
+    const user = client.db('kdt5').collection('user');
+
+    const findUser = await user.findOne({ id: req.body.id });
     if (!findUser) return res.status(400).send(LOGIN_NOTREGISTERED_MSG);
     if (findUser.password !== req.body.password)
       return res.status(400).send(LOGIN_WRONGPASSWORD_MSG);
