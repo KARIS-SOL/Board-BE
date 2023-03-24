@@ -1,7 +1,7 @@
 // 데이터베이스에 관련된 것들을 컨트롤 하기 위한 라우터
 
 const express = require('express');
-const userDB = require('../controllers/userController');
+const userDB = require('../Controllers/userController');
 
 const router = express.Router();
 
