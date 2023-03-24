@@ -11,7 +11,7 @@ const {
   getArticle,
   modifyArticle,
   deleteArticle,
-} = require('../controllers/boardController');
+} = require('../Controllers/boardController');
 
 const router = express.Router();
 
